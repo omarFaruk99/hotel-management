@@ -1,0 +1,30 @@
+import axios from "axios";
+
+export const API_BASE_URL = "https://corerest.selopian.us";
+
+// Get token from environment variables
+export const getToken = () => {
+  return process.env.REACT_APP_API_TOKEN;
+};
+
+// Create axios instance
+export const apiClient = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+// Add request interceptor
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = getToken();
+    if (token) {
+      config.headers.Authorization = `bearer ${token}`;
+    } else {
+      console.error("No API token found in environment variables");
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);

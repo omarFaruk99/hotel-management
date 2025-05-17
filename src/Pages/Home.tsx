@@ -1,11 +1,12 @@
-import React from 'react';
+import FoodCategories from "./FoodCategories";
 
 const Home = () => {
-    return (
-        <div className="card">
-            Start from here
-        </div>
-    );
+  return (
+    <div className="card">
+      Start from here
+      <FoodCategories></FoodCategories>
+    </div>
+  );
 };
 
 export default Home;
