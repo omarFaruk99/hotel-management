@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getFoodCategories } from "../api/services/foodService";
 import { FoodCategory } from "../api/types/foodTypes";
 
@@ -26,7 +27,10 @@ const FoodCategories: React.FC = () => {
       }
     };
 
-    fetchFoodCategories();
+    fetchFoodCategories().catch((err) => {
+      setError("Failed to start fetching food categories");
+      console.error(err);
+    });
   }, []);
 
   if (loading)
@@ -38,23 +42,27 @@ const FoodCategories: React.FC = () => {
       <h2 className="text-2xl font-bold mb-4">Food Categories</h2>
       <div className="grid">
         {categories.map((category) => (
-          <div key={category.id} className="col-12 md:col-6 lg:col-4 mb-4">
-            <div className="p-4 border-1 surface-border surface-card border-round">
-              <div className="flex align-items-center mb-3">
-                {category.categoryphotourl && (
-                  <img
-                    src={`https://corerest.selopian.us${category.categoryphotourl}`}
-                    alt={category.name}
-                    className="w-3rem h-3rem mr-3"
-                  />
-                )}
-                <div className="font-bold text-xl">{category.name}</div>
+          <div key={category.id} className="col-12 md:col-6 lg:col-4">
+            <Link to={`/food-categories/${category.id}`}>
+              <div className="p-4 border-1 surface-border surface-card border-round">
+                <div className="flex align-items-center mb-3">
+                  {category.categoryphotourl && (
+                    <img
+                      src={`https://corerest.selopian.us${category.categoryphotourl}`}
+                      alt={category.name}
+                      className="w-3rem h-3rem mr-3"
+                    />
+                  )}
+                  <div className="font-bold text-xl text-gray-900">
+                    {category.name}
+                  </div>
+                </div>
+                <p className="mb-3 text-gray-800">{category.description}</p>
+                <div className="text-sm text-500">
+                  {category.food_list.length} food items available
+                </div>
               </div>
-              <p className="mb-3">{category.description}</p>
-              <div className="text-sm text-500">
-                {category.food_list.length} food items available
-              </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

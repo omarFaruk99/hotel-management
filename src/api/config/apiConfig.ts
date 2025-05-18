@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// get base url from env variable
 export const API_BASE_URL = process.env.REACT_APP_BASE_URL
 
 // Get token from environment variables

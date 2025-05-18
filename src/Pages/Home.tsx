@@ -1,10 +1,8 @@
-import FoodCategories from "./FoodCategories";
-
 const Home = () => {
   return (
     <div className="card">
       Start from here
-      <FoodCategories></FoodCategories>
+      {/* <FoodCategories></FoodCategories> */}
     </div>
   );
 };
