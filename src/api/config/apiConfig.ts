@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_BASE_URL = "https://corerest.selopian.us";
+export const API_BASE_URL = process.env.REACT_APP_BASE_URL
 
 // Get token from environment variables
 export const getToken = () => {
