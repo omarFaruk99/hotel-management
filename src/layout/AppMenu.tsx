@@ -13,9 +13,9 @@ const AppMenu = () => {
           to: "/",
         },
         {
-          label: "Table",
-          icon: "pi pi-fw pi-table",
-          to: "/table",
+          label: "Orders",
+          icon: "pi pi-fw pi-shopping-cart",
+          to: "/orders",
         },
       ],
     },
