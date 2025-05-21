@@ -17,6 +17,11 @@ const AppMenu = () => {
           icon: "pi pi-fw pi-shopping-cart",
           to: "/orders",
         },
+        {
+          label: "HomeFilter",
+          icon: "pi pi-fw pi-filter",
+          to: "/homeFilter",
+        },
       ],
     },
   ];

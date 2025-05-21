@@ -4,6 +4,7 @@ import NotFound from "../NotFound/NotFound";
 import FoodCategories from "../Pages/FoodCategories";
 import FoodItems from "../Pages/FoodItems";
 import Orders from "../Pages/Orders";
+import AddFilterHomePage from "../Pages/AddFilterHomePage";
 
 export const router: any = createBrowserRouter([
   {
@@ -18,6 +19,9 @@ export const router: any = createBrowserRouter([
       {
         path: "/orders",
         element: <Orders />,
+      },{
+        path: "/homeFilter",
+        element: <AddFilterHomePage/>,
       },
       {
         path: "/food-categories/:categoryId",
